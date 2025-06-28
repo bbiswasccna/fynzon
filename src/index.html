@@ -2,12 +2,71 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Fynzon</title>
+  <title>Fynzon.com</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <!-- Custom Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+  <!-- jQuery Cdn -->
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 <body>
   <app-root></app-root>
+  <script type="text/javascript">
+    $(window).scroll(function () {
+      // console.log($(window).scrollTop())
+      if ($(window).scrollTop() > 63) {
+        $('.navbar').addClass('navbar-fixed');
+      }
+      if ($(window).scrollTop() < 64) {
+        $('.navbar').removeClass('navbar-fixed');
+      }
+    });
+</script>
+
+<!-- <script>
+  var count_particles, stats, update;
+  stats = new Stats;
+  stats.setMode(0);
+  stats.domElement.style.position = 'absolute';
+  stats.domElement.style.left = '0px';
+  stats.domElement.style.top = '0px';
+  document.body.appendChild(stats.domElement);
+  count_particles = document.querySelector('.js-count-particles');
+  update = function() {
+    stats.begin();
+    stats.end();
+    if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
+      count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
+    }
+    requestAnimationFrame(update);
+  };
+  requestAnimationFrame(update);
+</script> -->
+
+<script type="text/javascript">
+    var $rotateX = $('#rotateX');
+    var $win = $(window);
+    const wHeight = window.innerHeight;
+
+    $win.on('scroll', function () {
+      let top;
+      $win.scrollTop() > wHeight*1.20 && (top = $win.scrollTop()/75);
+      top > 30 && (top = 30);
+      $win.scrollTop() < wHeight*1.20 && (top = $win.scrollTop()/75);
+      top <= 0 && (top = 0);
+       console.log(top, $win.scrollTop(),  "$$");
+      var scrollBottom = $(document).height() - $(window).height() - $(window).scrollTop();
+      var foot = scrollBottom*0.45;
+      $rotateX.css('transform', 'perspective(500px) rotateX(' + top + 'deg)');
+    });
+  </script>
+
+<!-- <script src="./assets/js/aos.js"></script>
+<script>
+  AOS.init();
+</script> -->
 </body>
 </html>
